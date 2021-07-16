@@ -1,13 +1,15 @@
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import AppNavigator from './src/navigation/AppNavigator';
-// import { StyleSheet, Text, View } from 'react-native'; 
+ import { StyleSheet, Text, View } from 'react-native'; 
 // import CarouselComponent from './src/components/CarouselComponent';
 // import Carousel from 'react-native-snap-carousel';
 
 export default function App() {
   return (
+    <View flex={1}>
     <AppNavigator/>
+    </View>
   );
 }
 
