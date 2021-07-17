@@ -26,23 +26,8 @@ class Favoris extends React.Component {
   constructor(props) {
     super(props);
   }
-  // async componentDidMount() {
-  //   // const { favorisCocktails } = store.getState().DataReucer;
-  //   // console.log("axiosuuuuuuuuuu", favorisCocktails);
-  //   // this.setState({ DATA: favorisCocktails });
-  //   const { favorisCocktails } = this.props;
-  // }
-  // componentWillReceiveProps() {
-  //   const favorisCocktails = store.getState();
-  //   const { DATA } = this.state;
-  // }
 
   render() {
-    // const favorisCocktails = store.getState();
-    // // console.log("daata", store.getState());
-    // this.setState({ DATA: favorisCocktails });
-
-    // const { DATA } = this.state;
     const { favorisCocktails } = this.props;
     console.log("tttt", favorisCocktails);
     return (

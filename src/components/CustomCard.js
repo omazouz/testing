@@ -1,47 +1,29 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  CardTitle,
-  CardContent,
-  CardAction,
-  CardButton,
-  CardImage,
-} from "react-native-cards";
-import {
-  ScrollView,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
-import { addToFavoris } from "../redux/FavorisAction";
 import { onChange, set } from "react-native-reanimated";
 import store from "../redux/store";
 import { connect } from "react-redux";
-import useStateWithCallbackLazy from "use-state-with-callback";
+import { addToFavoris } from "../redux/DataAction";
 
 const CustomCard = (item) => {
   const { element } = item;
   const [favoris, setFavoris] = useState(null);
 
-  // const dispatch = useDispatch();
-
   const onToggleFavoris = async () => {
     element.favoris = true;
-    await store.dispatch({ type: "TOGGLE_FAVORIS", payload: element });
+    await store.dispatch(addToFavoris(element));
     setFavoris(element.favoris);
   };
 
-  const onRemoveFavoris = async () => {
-    element.favoris = false;
-    await store.dispatch({
-      type: "DELETE_FAVORIS",
-      payload: element,
-    });
-    setFavoris(element.favoris);
-  };
+  // const onRemoveFavoris = async () => {
+  //   element.favoris = false;
+  //   await store.dispatch({
+  //     type: "DELETE_FAVORIS",
+  //     payload: element,
+  //   });
+  //   setFavoris(element.favoris);
+  // };
 
   return (
     <View style={styles.containerStyle}>
@@ -82,12 +64,12 @@ const CustomCard = (item) => {
               color={element.favoris ? "red" : "silver"}
             />
           </TouchableOpacity>
-          <TouchableOpacity
-            // disabled={element.favoris}
+          {/* <TouchableOpacity
+            // disabled={!(!element.favoris && !favoris)}
             onPress={() => onRemoveFavoris()}
           >
             <AntDesign name="closecircleo" size={45} color="silver" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </View>
@@ -96,7 +78,6 @@ const CustomCard = (item) => {
 
 const styles = StyleSheet.create({
   imageContainerStyle: {
-    //  height:'50%',
     flex: 1,
     zIndex: 1,
   },
@@ -115,8 +96,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flex: 1,
     justifyContent: "space-around",
-    // opacity:0.5,
-    //  zIndex: 0
   },
   titleStyle: {
     fontSize: 20,
@@ -125,4 +104,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect()(CustomCard);
+export default connect(addToFavoris)(CustomCard);

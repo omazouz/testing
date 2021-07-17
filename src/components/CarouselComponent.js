@@ -1,23 +1,9 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  Dimensions,
-  StyleSheet,
-  ImageBackground,
-  SafeAreaView,
-  TextInput,
-} from "react-native";
-import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
-import * as axios from "axios";
-// import { FontAwesome } from 'react-native-elements';
+import { ImageBackground, SafeAreaView, TextInput } from "react-native";
 
-import Carousel from "react-native-snap-carousel"; // Version can be specified in package.json
+import Carousel from "react-native-snap-carousel";
 
-// import { scrollInterpolator, animatedStyles } from './utils/animations';
 import CustomCard from "./CustomCard";
-import { back } from "react-native/Libraries/Animated/src/Easing";
-import { Feather } from "@expo/vector-icons";
 
 export default class CarouselComponent extends Component {
   state = {
@@ -31,10 +17,6 @@ export default class CarouselComponent extends Component {
     super(props);
     this._renderItem = this._renderItem.bind(this);
   }
-  // componentWillMount() {
-  //   const { DATA } = this.props;
-  //   this.setState({ DATA });
-  // }
 
   _renderItem({ item }) {
     this.setState({ backGroundImage: item.strDrinkThumb });
@@ -42,9 +24,8 @@ export default class CarouselComponent extends Component {
   }
   async onSraech(e) {
     let dataFiltered = [];
-    await this.setState({ inputValue: e });
+    this.setState({ inputValue: e });
     await this.props.DATA.filter((el) => {
-      // console.log("this.props", el);
       el.strDrink.toLowerCase().indexOf(e.toLowerCase()) >= 0 &&
         dataFiltered.push(el);
     });
@@ -70,7 +51,6 @@ export default class CarouselComponent extends Component {
           }}
         >
           <TextInput
-            // style={styles.input}
             style={{
               color: "black",
               backgroundColor: "silver",

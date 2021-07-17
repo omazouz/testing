@@ -12,13 +12,13 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         favorisCocktails: [...state.favorisCocktails, action.payload],
       };
-    case "DELETE_FAVORIS":
-      return {
-        ...state,
-        favorisCocktails: state.favorisCocktails.filter(
-          (el) => el.idDrink != action.payload.idDrink
-        ),
-      };
+    // case "DELETE_FAVORIS":
+    //   return {
+    //     ...state,
+    //     favorisCocktails: state.favorisCocktails.filter(
+    //       (el) => el.idDrink != action.payload.idDrink
+    //     ),
+    //   };
 
     default:
       return state;
