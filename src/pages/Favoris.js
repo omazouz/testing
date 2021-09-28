@@ -64,11 +64,8 @@ const styles = StyleSheet.create({
     // paddingHorizontal:5,
   },
 });
-// const mapStateToProps = ({
-//   FavorisReducer
-// })=>{
-//   const
-// }
+
+
 const mapStateToProps = ({ DataReducer }) => {
   const { allCocktails, favorisCocktails } = DataReducer;
   return { allCocktails, favorisCocktails };
